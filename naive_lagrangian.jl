@@ -229,11 +229,11 @@ function plot_lagrange_omega(sol, ylims)
     lw = 2
     fontsize = 14
     fontsize2 = 18
-
+    
     p = plot(sol.t, omega1, label=L"\omega_1",
     xguide = L"t",
     yticks = [],
-    title = L"\omega(t)" *" - Wackelstein Lagragian",
+    title = "Lagrange-Formulierung",
     legend=false,
     titlefont = font(fontsize2,"Computer Modern"),
     guidefont = font("Computer Modern"),

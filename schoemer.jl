@@ -239,7 +239,7 @@ function plot_schoemer_omega(sol, pos = :topleft)
     p = plot(sol.t, omega1, label=L"\tilde{\omega}_1",
         xguide = L"t",
         yguide = L"\tilde{\omega}_i",
-        title = L"\tilde{\omega}" *" "* L"(t)" *" - Wackelstein Schömer", 
+        title = "Modell "*L"Schömer \; red.",
         legend = pos,
         size = (700, 500),
         grid = true,

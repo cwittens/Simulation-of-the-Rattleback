@@ -31,7 +31,7 @@ fontsize2 = 18
 tspan0 = (0.0, 2*34.35) # = (0.0, 2 * sol_k.t[argmin(abs.(sol_k[6,:]))]) to be symmetric
 
 # define parameters for the work-precision runs
-N_runs = 100
+N_runs = 1000
 
 abstols = 1.0 ./ 10.0 .^ (3:13)
 reltols = 1.0 ./ 10.0 .^ (3:13)
@@ -98,14 +98,14 @@ xlim = (xlim_left, xlim_right)
 ylim = (ylim_left, ylim_right)
 
 p1 = plot(wp_l2, xlabel = L"L^2"*" - Fehler", ylabel = "Rechenzeit [s]",   
-    title = "Modell von Kuypers",
+    title = "Modell "*L"Kuypers",
     titlefont = font(fontsize2,"Computer Modern"),
     guidefont = font("Computer Modern"),
     dpi = 300, size = (700, 500), 
     lw = lw,
     grid = true,
     legendfontsize=fontsize,
-    legend = :topright,
+    legend = :bottomleft,
     xtickfontsize=fontsize,
     ytickfontsize=fontsize,
     ylabelfontsize=fontsize2,
@@ -125,7 +125,31 @@ save_at1 =  joinpath(@__DIR__, "../plots", "work_precision_kuypers_l2.pdf")
 
 
 p2 = plot(wp_max, xlabel = L"L^\infty"*" - Fehler", ylabel = "Rechenzeit [s]",   
-    title = "Modell von Kuypers",
+    title = "Modell "*L"Kuypers",
+    titlefont = font(fontsize2,"Computer Modern"),
+    guidefont = font("Computer Modern"),
+    #titlesize = fontsize2,
+    dpi = 300, size = (700, 500), 
+    lw = lw,
+    grid = true,
+    legendfontsize=fontsize,
+    legend = :bottomleft,
+    xtickfontsize=fontsize,
+    ytickfontsize=fontsize,
+    ylabelfontsize=fontsize2,
+    xlabelfontsize=fontsize2,
+    yformatter = x -> @sprintf("%.0e", x),
+    xlims = xlim,
+    ylims = ylim,
+)
+
+save_at2 = joinpath(@__DIR__, "../plots", "work_precision_kuypers_max.pdf")
+@info "Work-Precision-Diagramm for Kuypers with max norm saved at", savefig(p2, save_at2)
+
+
+
+p3 = plot(wp_l2_rs, xlabel = L"L^2"*" - Fehler", ylabel = "Rechenzeit [s]",   
+    title = "Modell "*L"Schömer"*" "* L"red.",
     titlefont = font(fontsize2,"Computer Modern"),
     guidefont = font("Computer Modern"),
     #titlesize = fontsize2,
@@ -143,30 +167,6 @@ p2 = plot(wp_max, xlabel = L"L^\infty"*" - Fehler", ylabel = "Rechenzeit [s]",
     ylims = ylim,
 )
 
-save_at2 = joinpath(@__DIR__, "../plots", "work_precision_kuypers_max.pdf")
-@info "Work-Precision-Diagramm for Kuypers with max norm saved at", savefig(p2, save_at2)
-
-
-
-p3 = plot(wp_l2_rs, xlabel = L"L^2"*" - Fehler", ylabel = "Rechenzeit [s]",   
-    title = "Modell von Schömer (red.)",
-    titlefont = font(fontsize2,"Computer Modern"),
-    guidefont = font("Computer Modern"),
-    #titlesize = fontsize2,
-    dpi = 300, size = (700, 500), 
-    lw = lw,
-    grid = true,
-    legendfontsize=fontsize,
-    legend = :topleft,
-    xtickfontsize=fontsize,
-    ytickfontsize=fontsize,
-    ylabelfontsize=fontsize2,
-    xlabelfontsize=fontsize2,
-    yformatter = x -> @sprintf("%.0e", x),
-    xlims = xlim,
-    ylims = ylim,
-)
-
 save_at3 = joinpath(@__DIR__, "../plots", "work_precision_schoemer_red_l2.pdf")
 @info "Work-Precision-Diagramm for Schoemer (red.) with l2 norm saved at", savefig(p3, save_at3)
 
@@ -174,7 +174,7 @@ save_at3 = joinpath(@__DIR__, "../plots", "work_precision_schoemer_red_l2.pdf")
 
 
 p4 = plot(wp_max_rs, xlabel = L"L^\infty"*" - Fehler", ylabel = "Rechenzeit [s]",   
-    title = "Modell von Schömer (red.)",
+    title = "Modell "*L"Schömer"*" "* L"red.",
     titlefont = font(fontsize2,"Computer Modern"),
     guidefont = font("Computer Modern"),
     #titlesize = fontsize2,
@@ -182,7 +182,7 @@ p4 = plot(wp_max_rs, xlabel = L"L^\infty"*" - Fehler", ylabel = "Rechenzeit [s]"
     lw = lw,
     grid = true,
     legendfontsize=fontsize,
-    legend = :topleft,
+    legend = :topright,
     xtickfontsize=fontsize,
     ytickfontsize=fontsize,
     ylabelfontsize=fontsize2,

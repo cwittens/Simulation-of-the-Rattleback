@@ -563,7 +563,7 @@ function plot_kuypers_omega(sol, pos = :topleft)
     p = plot(sol.t, sol[4,:], label=L"\omega_1",
     xguide = L"t",
     yguide = L"\omega_i",
-    title = L"\omega(t)" *" - Wackelstein Kuypers",
+    title = "Modell "*L"Kuypers",
     legend = pos,
     size = (700, 500),
     grid = true,

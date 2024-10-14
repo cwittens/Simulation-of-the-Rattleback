@@ -52,7 +52,8 @@ function plot_stability(with_schoemer_original, tol, method=Tsit5, ω0 = [0.01, 
     fontsize2 = 18
 
 
-    p = plot(sol_k.t, Eges_k, label = L"\Delta E"*" Kuypers", xlabel = "t", ylabel = L"\Delta E"*" [a.u.]",   
+    p = plot(sol_k.t, Eges_k, label = L"\Delta E  \: \: Kuypers", 
+        xlabel = "t", ylabel = L"\Delta E"*" [a.u.]",   
         dpi = 300, size = (700, 500), 
         lw = lw,
         grid = true,
@@ -67,10 +68,10 @@ function plot_stability(with_schoemer_original, tol, method=Tsit5, ω0 = [0.01, 
         yformatter = x -> @sprintf("%.0e", x),
     )
     if with_schoemer_original
-        plot!(sol_s.t, Eges_s, label = L"\Delta E"*" Schömer", lw=lw)
+        plot!(sol_s.t, Eges_s, label = L"\Delta E \: \: Schömer", lw=lw)
     end
     
-    plot!(sol_rs.t, Eges_rs, label = L"\Delta E"*" Schömer red.", lw=lw)
+    plot!(sol_rs.t, Eges_rs, label = L"\Delta E \: \: Schömer \; red.", lw=lw)
     return p
 end
 
@@ -112,7 +113,7 @@ function plot_stability_different_methods(tol, method1, method2,  ω0 = [0.01, -
     fontsize2 = 18
 
 
-    p = plot(sol_k.t, Eges_k, label = "Kuyper mit $method1", xlabel = "t", ylabel = L"\Delta E"*" [a.u.]",   
+    p = plot(sol_k.t, Eges_k, label = L"Kuyper" * " mit $method1", xlabel = "t", ylabel = L"\Delta E"*" [a.u.]",   
         dpi = 300, size = (700, 500), 
         lw = lw,
         grid = true,
@@ -127,9 +128,9 @@ function plot_stability_different_methods(tol, method1, method2,  ω0 = [0.01, -
         legend=true,
         yformatter = x -> @sprintf("%.e", x),
     )
-    plot!(sol_k2.t, Eges_k2, label = "Kuyper mit $method2", lw=lw)
-    plot!(sol_rs.t, Eges_rs, label ="Schömer (red.) mit $method1", lw=lw)
-    plot!(sol_rs2.t, Eges_rs2, label = "Schömer (red.) mit $method2", lw=lw)
+    plot!(sol_k2.t, Eges_k2, label = L"Kuyper" * " mit $method2", lw=lw)
+    plot!(sol_rs.t, Eges_rs, label = L"Schömer \; red."*" mit $method1", lw=lw)
+    plot!(sol_rs2.t, Eges_rs2, label = L"Schömer \; red."*" mit $method2", lw=lw)
 
     return p
 end

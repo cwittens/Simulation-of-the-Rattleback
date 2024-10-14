@@ -164,7 +164,7 @@ function plot_hamilton_omega(sol, ylims, parameterH)
     p = plot(sol.t, omega1, label=L"\omega_1",
     xguide = L"t",
     yguide = L"\omega_i",
-    title = L"\omega(t)" *" - Wackelstein Hamilton",
+    title = "Hamilton-Formulierung",
     legend = :topleft,
     titlefont = font(fontsize2,"Computer Modern"),
     guidefont = font("Computer Modern"),

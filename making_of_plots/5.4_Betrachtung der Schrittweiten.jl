@@ -143,7 +143,7 @@ begin
 
     p1 = plot(sol_k.t[1:end-1], diff(sol_k.t), 
         xlabel = "t", ylabel = "Schrittweiten "*L"\Delta t",   
-        label = "Kuypers",
+        label = L"Kuypers",
         # title = "Schrittweiten",
         titlefont = font(fontsize2,"Computer Modern"),
         guidefont = font("Computer Modern"),
@@ -160,9 +160,9 @@ begin
         
     
     )
-    plot!(sol_rs.t[1:end-1], diff(sol_rs.t), label = "Schömer (red.)", lw = 2)
-    hline!([mean(diff(sol_k.t))], label = "durchschn. Schrittweite Kuypers", lw = 2, linestyle = :dash)
-    hline!([mean(diff(sol_rs.t))], label = "durchschn. Schrittweite Schömer (red.)", lw = 2, linestyle = :dash)
+    plot!(sol_rs.t[1:end-1], diff(sol_rs.t), label = L"Schömer \; red.", lw = 2)
+    hline!([mean(diff(sol_k.t))], label = "durchschn. Schrittweite "* L"Kuypers", lw = 2, linestyle = :dash)
+    hline!([mean(diff(sol_rs.t))], label = "durchschn. Schrittweite "*L"Schömer \; red.", lw = 2, linestyle = :dash)
 end
 
 
@@ -185,7 +185,7 @@ begin
 
     p2 = plot(x, xticks = (2:2:length(tols), tols[2:2:end]), 
         xrotation =0,
-        label = "Schömer (red.)",
+        label = L"Schömer \; red.",
         xlabel = "Toleranzen", 
         # ylabel = "# Schritte adaptive / # Schritte konstant", 
         ylabel = "Verhältnis durchschnittlicher \n zu kleinster Schrittweite",
@@ -203,7 +203,7 @@ begin
         xlabelfontsize=fontsize2,
     )
 
-    plot!(y, label = "Kuypers", lw=lw)
+    plot!(y, label = L"Kuypers", lw=lw)
 
 end
 
