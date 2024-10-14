@@ -604,7 +604,7 @@ end
 
 
 
-# plot the difference of the omega values of the kuypers solution and the schömer solution
+# plot the difference of the omega values of the kuypers solution and the schömer red. solution
 function plot_differance_omega(sol_K, sol_S)
     if length(sol_K) != length(sol_S)
         throw(ArgumentError("sol_K and sol_S must have the same length"))
@@ -616,7 +616,7 @@ function plot_differance_omega(sol_K, sol_S)
     omega3 = zeros(length(sol_S))
 
     for i in 1:length(sol_S)
-        c, q, v, w = unpack_rattleback(sol_S[i])
+        c, q, w = unpack_rattleback_reduced(sol_S[i])
         R = to_rotation_matrix(q)
         ω = R' * w
 
