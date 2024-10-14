@@ -33,6 +33,8 @@ tspan0 = (0.0, 2*34.35) # = (0.0, 2 * sol_k.t[argmin(abs.(sol_k[6,:]))]) to be s
 # define parameters for the work-precision runs
 N_runs = 1000
 
+println("The Number of work-precision runs is set to $N_runs, if this number is high (>100), this may take a while to run.")
+
 abstols = 1.0 ./ 10.0 .^ (3:13)
 reltols = 1.0 ./ 10.0 .^ (3:13)
 
