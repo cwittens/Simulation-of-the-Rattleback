@@ -1,4 +1,4 @@
-# Bachelors_Thesis_Mathematics
+# Simulation of the Rattleback
 This is the GitHub Repository accompanying my mathematics Bachelor's thesis of simulating the rattleback. As the thesis was written in german, this README will also be in german from now on.
 
 In diesem Repository findet sich der Code, um alle *Plots* in meiner Bachelorarbeit "Simulation des Wackelsteines" zu reproduzieren, die *Plots* selbst und noch weitere *Plots*, welche es nicht in die Bachelorarbeit selbst geschafft haben. Außerdem hat man die Möglichkeit verschiedenste Parameter, wie etwa die Anfangsbedingungen, die Toleranzen oder die Methoden zum Lösen der Bewegungsgleichen zu ändern. 
