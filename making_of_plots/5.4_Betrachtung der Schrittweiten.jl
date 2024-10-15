@@ -186,7 +186,7 @@ begin
     p2 = plot(x, xticks = (2:2:length(tols), tols[2:2:end]), 
         xrotation =0,
         label = L"Schömer \; red.",
-        xlabel = "Toleranzen", 
+        xlabel = "Toleranzen "*L"\tau", 
         # ylabel = "# Schritte adaptive / # Schritte konstant", 
         ylabel = "Verhältnis durchschnittlicher \n zu kleinster Schrittweite",
         # title = "Faktor mehr Schritte bei konstanter Schrittweite", 
