@@ -222,7 +222,13 @@ function plot_schoemer_omega(sol, pos = :topleft)
     omega3 = zeros(length(sol))
 
     for i in 1:length(sol)
-        c, q, v, w = unpack_rattleback(sol[i])
+
+        if length(sol[i]) == 13
+            c, q, v, w = unpack_rattleback(sol[i])
+        elseif length(sol[i]) == 10
+            c, q, w = unpack_rattleback_reduced(sol[i])
+        end
+
         R = to_rotation_matrix(q)
         ω = R' * w
 
@@ -236,10 +242,16 @@ function plot_schoemer_omega(sol, pos = :topleft)
     fontsize = 14
     fontsize2 = 18
 
+    if length(sol[1]) == 13
+        title = "Modell "*L"Schömer"
+    elseif length(sol[1]) == 10
+        title = "Modell "*L"Schömer \; red."
+    end
+
     p = plot(sol.t, omega1, label=L"\tilde{\omega}_1",
         xguide = L"t",
         yguide = L"\tilde{\omega}_i",
-        title = "Modell "*L"Schömer \; red.",
+        title = title,
         legend = pos,
         size = (700, 500),
         grid = true,

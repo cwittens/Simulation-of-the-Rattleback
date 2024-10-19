@@ -121,3 +121,17 @@ stored_at6 =  joinpath(@__DIR__, "../plots", "schoemer_omega_pushed_to_hard.pdf"
 
 
 
+#set up schoemer_red
+ys, parameter_s = setup_rattleback_schoemer_reduced(ω0)
+prob_s = ODEProblem(rattleback_reduced!, ys, tspan, parameter_s)
+sol_s = solve(prob_s, Tsit5(), reltol=tol, abstol=tol, saveat = 0.01);
+
+
+p7 = plot_schoemer_omega(sol_s)
+ylims!(p7, ylims(p5))
+
+stored_at7 =  joinpath(@__DIR__, "../plots", "schoemer_red_omega_pushed_to_hard.pdf")
+@info "Pushing the rattleback to hard - using Schoemer red. Saved at" , savefig(p7, stored_at7)
+
+
+

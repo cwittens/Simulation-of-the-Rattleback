@@ -19,7 +19,7 @@ tspan = (0.0, 2*34.35) # = (0.0, 2 * sol_k.t[argmin(abs.(sol_k[6,:]))]) to be sy
 #set up kuypers 
 y0, parameter0 = set_up_original_problem_for_torque()
 prob_k = ODEProblem(dydt_torque!, y0, tspan, parameter0)
-sol_k = solve(prob_k, Tsit5(), reltol=tol, abstol=tol, saveat = 0.01);
+sol_k = solve(prob_k, Tsit5(), reltol=tol, abstol=tol);
 
 p1 = plot_kuypers_omega(sol_k)
 
@@ -28,11 +28,10 @@ stored_at_1 =  joinpath(@__DIR__, "../plots", "vergleich_kuypers_omega.pdf")
 
 
 
-
-#set up schoemer
-ys, parameter_s = setup_rattleback_schoemer()
-prob_s = ODEProblem(rattleback!, ys, tspan, parameter_s)
-sol_s = solve(prob_s, Tsit5(), reltol=tol, abstol=tol, saveat = 0.01);
+#set up schoemer red.
+ys, parameter_s = setup_rattleback_schoemer_reduced()
+prob_s = ODEProblem(rattleback_reduced!, ys, tspan, parameter_s)
+sol_s = solve(prob_s, Tsit5(), reltol=tol, abstol=tol);
 
 
 p2 = plot_schoemer_omega(sol_s)
